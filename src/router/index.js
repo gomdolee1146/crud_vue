@@ -5,10 +5,23 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 import ReadComponent from '../components/ReadComponent'
 import CreateComponent from '../components/CreateComponent'
+import DetailComponent from '../components/DetailComponent'
 
 const routes = [
- { path: '/read', component:ReadComponent},
- { path: '/create', component:CreateComponent},
+  { 
+    path: '/', 
+    component: ReadComponent
+  },
+  { 
+    path: '/create/:contentId?', 
+    name: 'Create',
+    component: CreateComponent
+  },
+  { 
+    path: '/detail/:contentId', 
+    name: 'Detail',
+    component: DetailComponent
+  },
 ]
 
 const router = createRouter({

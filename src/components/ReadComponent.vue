@@ -6,7 +6,7 @@
         <th>타이틀</th>
         <th>내용</th>
       </tr>
-      <tr v-for="data in datas" :key="data">
+      <tr v-for="(data, idx) in datas" :key="data" @click="detail(idx)">
         <td>{{ data.title }}</td>
         <td>{{ data.writer }}</td>
         <td>{{ data.content }}</td>
@@ -30,6 +30,15 @@ export default {
       this.$router.push({
         path:'create'
       })
+    },
+    detail(idx) {
+      this.$router.push({
+        name: 'Detail',
+        params: {
+          contentId: idx
+        }
+      })
+      console.log(idx)
     }
   }
 }
