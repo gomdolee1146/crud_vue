@@ -1,0 +1,69 @@
+@function icon-img($icon-name, $icon-color) {
+    $icon-list:(
+        chevron-left: "%3Csvg xmlns='http://www.w3.org/2000/svg' width='25' height='25' fill='none'%3E%3Cpath stroke='#{$icon-color}' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' stroke-width='2' d='m16.021 20.348-7.71-7.71 7.71-7.71'/%3E%3C/svg%3E",
+        );
+        $icon: map-get($icon-list, $icon-name);
+        @return url("data:image/svg+xml;charset=utf8,#{$icon}")
+    };
+
+@mixin set-icon($icon-name, $icon-size, $icon-color, $disp:block){
+    display: $disp;
+    width: $icon-size;
+    height: $icon-size;
+    background: icon-img($icon-name, $icon-color) no-repeat center / 100% auto;
+}
+
+@mixin ico-chevron($icon-color, $direction:left, $icon-width:2, $linecap:'round') {
+    $transform: rotate(0deg);
+
+    @if $direction == 'up' {
+        $transform: rotate(90deg);
+    }
+    @if $direction == 'down' {
+        $transform: rotate(-90deg);
+    }
+    @if $direction == 'right' {
+        $transform: scaleX(-1);
+    }
+    
+    background: url("data:image/svg+xml;charset=utf8, %3Csvg xmlns='http://www.w3.org/2000/svg' width='25' height='25' fill='none'%3E%3Cpath stroke='#{$icon-color}' stroke-linecap='#{$linecap}' stroke-linejoin='#{$linecap}' stroke-miterlimit='10' stroke-width='#{$icon-width}' d='m16.021 20.348-7.71-7.71 7.71-7.71'/%3E%3C/svg%3E") no-repeat center;
+    background-size: 20px auto;
+    transform: $transform;
+}
+
+
+// SVG 용 컬러 변수 
+
+$svg-primary:                           '%236af2b0';
+$svg-primary-1:                         '%23f0fef7';
+$svg-primary-2:                         '%23e1fcef';
+$svg-primary-3:                         '%23d3fbe7';
+$svg-primary-4:                         '%23c3fadf';
+$svg-primary-5:                         '%23b5f9d8';
+$svg-primary-6:                         '%23a6f7d0';
+$svg-primary-7:                         '%2397f6c8';
+$svg-primary-8:                         '%2388f5c0';
+$svg-primary-9:                         '%2379f3b8';
+
+$svg-secondary:                         '%237560ee';
+$svg-secondary-1:                       '%23f2f0fe';
+$svg-secondary-2:                       '%23e3dffc';
+$svg-secondary-3:                       '%23d6d0fa';
+$svg-secondary-4:                       '%23c8bff8';
+$svg-secondary-5:                       '%23bab0f7';
+$svg-secondary-6:                       '%23aca0f5';
+$svg-secondary-7:                       '%239f90f4';
+$svg-secondary-8:                       '%239180f1';
+$svg-secondary-9:                       '%238370f0';
+
+$svg-gray-0:                            '%23fff';
+$svg-gray-1:                            '%23F1F1F1';
+$svg-gray-2:                            '%23E8E8E8';
+$svg-gray-3:                            '%23DBDBDB';
+$svg-gray-4:                            '%23C7C7C7';
+$svg-gray-5:                            '%23B1B1B1';
+$svg-gray-6:                            '%23969696';
+$svg-gray-7:                            '%23636363';
+$svg-gray-8:                            '%23505050';
+$svg-gray-9:                            '%23333333';
+$svg-gray-10: 						            	'%23111';
