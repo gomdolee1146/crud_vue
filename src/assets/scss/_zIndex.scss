@@ -7,7 +7,3 @@ $list: (
 @function z($layer){
     @return map-get($list, $layer);
 }
-
-span {
-    color: $primary;
-}

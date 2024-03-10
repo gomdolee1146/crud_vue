@@ -6,6 +6,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import ReadComponent from '../components/ReadComponent'
 import CreateComponent from '../components/CreateComponent'
 import DetailComponent from '../components/DetailComponent'
+import TestComponent from '../components/TestComponent'
 
 const routes = [
   { 
@@ -21,6 +22,11 @@ const routes = [
     path: '/detail/:contentId', 
     name: 'Detail',
     component: DetailComponent
+  },
+  { 
+    path: '/calendar', 
+    name: 'Calendar',
+    component: TestComponent
   },
 ]
 
