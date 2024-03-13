@@ -12,7 +12,7 @@ const navMenuList = [
   {
     txt: '메시지',
     icon: 'nav__ico-message',
-    link: 'message'
+    link: '/message'
   },
 ]
 

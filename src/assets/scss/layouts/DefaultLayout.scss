@@ -1,0 +1,12 @@
+@import '@/assets/scss/style.scss';
+
+#app {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.main {
+  height: calc(100vh - $header-height);
+  margin: $header-height 0 0 $nav-width;
+  padding: 20px;
+  box-sizing: border-box;
+}

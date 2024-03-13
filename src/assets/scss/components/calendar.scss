@@ -1,0 +1,17 @@
+@import '@/assets/scss/style.scss';
+
+::v-deep .vc-pane-container {
+  .vc-header {
+    height: 60px;
+    margin-bottom: -60px;
+  }
+
+  .vc-weeks {
+    display: grid;
+    min-height: 300px;
+    height: calc(100vh - 200px);
+  }
+  .vc-weekdays {
+    align-items: flex-end;
+  }
+}

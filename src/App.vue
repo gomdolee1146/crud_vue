@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <sidePanel></sidePanel>
+    
     <main class="main">
       <router-view></router-view>
     </main>
@@ -8,7 +9,7 @@
 </template>
 
 <script>
-import sidePanel from './components/layouts/SidePanel.vue';
+import sidePanel from '@/components/layouts/SidePanel.vue';
 
 export default {
   name: 'App',
@@ -17,11 +18,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#app {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-.main {
-  padding-left: 260px;
-}
+@import '@/assets/scss/layouts/DefaultLayout.scss';
 </style>
