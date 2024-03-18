@@ -3,24 +3,36 @@ const { mapCurrent } = userSecreens({xs: '0px', sm: '640px', md: '768px', lg: '1
 </script> -->
 <template>
   <div>
-    <VCalendar
-      expanded
-      @dayclick="test($event)"
-    />
+    <VCalendar expanded @dayclick="test($event)" />
+    <CreateModal v-if="isShow" :createData="createData"></CreateModal>
   </div>
 </template>
 
 <script>
+import CreateModal from '@/components/layers/createModal.vue';
+
 export default {
   name: 'TCalendar',
+  components: { CreateModal },
   data() {
     return {
-      test(e){
-        console.log(e)
-      }
-    }
-  }
-}
+      isShow: false,
+      date: '',
+      createData: {
+        isShow: this.isShow,
+        date: '',
+      },
+    };
+  },
+  methods: {
+    test(e) {
+      this.isShow = !this.isShow;
+      this.createData.date = e.id;
+      console.log(e)
+    },
+   
+  },
+};
 </script>
 
 <style lang="scss" scoped>

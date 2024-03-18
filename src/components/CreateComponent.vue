@@ -1,6 +1,11 @@
 <template>
   <div>
-    <input type="text" placeholder="글쓴이" v-model="writer" @click="console.log(typeof(index !== 'undefined'))"/>
+    <input
+      type="text"
+      placeholder="글쓴이"
+      v-model="writer"
+      @click="console.log(typeof (index !== 'undefined'))"
+    />
     <input type="text" placeholder="제목" v-model="title" />
     <textarea placeholder="내용" v-model="content"></textarea>
 
@@ -9,11 +14,11 @@
 </template>
 
 <script>
-import data from '@/data'
+import data from '@/data';
 
 export default {
   name: 'CreateComponent',
-  data(){
+  data() {
     var index = this.$route.params.contentId;
 
     return {
@@ -21,36 +26,36 @@ export default {
       index: index,
       writer: index && index !== undefined ? data[index].writer : '',
       title: index && index !== undefined ? data[index].title : '',
-      content: index && index !== undefined ? data[index].content : ''
-    }
+      content: index && index !== undefined ? data[index].content : '',
+    };
   },
-  methods:{
+  methods: {
     write() {
       this.data.push({
         writer: this.writer,
         title: this.title,
-        content: this.content
-      })
+        content: this.content,
+      });
       this.$router.push({
-        path: '/'
-      })
+        path: '/',
+      });
     },
     update() {
-      data[this.index].writer = this.writer
-      data[this.index].title = this.title
-      data[this.index].content = this.content
+      data[this.index].writer = this.writer;
+      data[this.index].title = this.title;
+      data[this.index].content = this.content;
       this.$router.push({
-        path: '/'
-      })
+        path: '/',
+      });
     },
     done() {
-      if (this.index && this.index !== undefined) this.update()
+      if (this.index && this.index !== undefined) this.update();
       else this.write();
     },
-  }
-}
+  },
+};
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+@import '@/assets/scss/components/formCommon.scss';
 </style>

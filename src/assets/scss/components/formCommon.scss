@@ -1,0 +1,71 @@
+@import '@/assets/scss/style.scss';
+
+.form {
+  padding: 32px;
+  box-sizing: border-box;
+
+  &__row {
+    @include flex-box(flex-start, center);
+    margin-bottom: 8px;
+  }
+
+  &__title {
+    flex: 0 0 160px;
+    @include flex-box(flex-start, center);
+    gap: 4px;
+    height: 40px;
+
+    i {
+      display: block;
+      width: 20px;
+      height: 20px;
+    }
+    span {
+      color: $text-gray1;
+    }
+  }
+  &__content {
+    flex: 1 1 auto;
+  }
+
+  &__input,
+  &__textarea {
+    width: 100%;
+    border: 1px solid $border-default;
+    border-radius: 4px;
+    background: #fff;
+    box-sizing: border-box;
+
+    &::placeholder {
+      font-size: 16px;
+      font-weight: 400;
+      letter-spacing: -0.05em;
+      color: $text-gray3;
+    }
+  }
+
+  &__input {
+    height: 40px;
+    padding: 0 12px;
+  }
+  &__textarea {
+    height: 200px;
+    padding: 12px 16px;
+    margin: 0 20px;
+  }
+
+  &__btn_wrap {
+    @include flex-box(center);
+    width: 100%;
+    margin: 24px 0;
+  }
+  &__btn {
+    display: block;
+    width: 120px;
+    height: 48px;
+    line-height: 46px;
+    border-radius: 12px;
+    background-color: $brand;
+    color: #fff;
+  }
+}
