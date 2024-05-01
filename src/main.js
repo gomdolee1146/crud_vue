@@ -1,4 +1,4 @@
-import './assets/scss/style.scss';
+import './assets/scss/global.scss';
 
 import VCalendar from 'v-calendar';
 import 'v-calendar/style.css';

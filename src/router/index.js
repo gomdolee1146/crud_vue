@@ -1,61 +1,32 @@
-// import Vue from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
-// Vue.use(VueRouter)
+import ReadView from '../views/ReadView'
+import CreateView from '../views/CreateView'
+import DetailView from '../views/DetailView'
 
-import ReadComponent from '../components/ReadComponent'
-import CreateComponent from '../components/CreateComponent'
-import DetailComponent from '../components/DetailComponent'
-
-import TDashboard from '../components/template/TDashboard'
-import TCalendar from '../components/template/TCalendar'
-import TMessage from '../components/template/TMessage'
-
-import TMypage from '../components/template/TMypage'
-import TLogout from '../components/template/TLogout'
+import CalendarView from '../views/CalendarView'
 
 const routes = [
   { 
-    path: '/', 
-    component: ReadComponent
+    path: '/',
+    component: ReadView
   },
   { 
     path: '/create/:contentId?', 
     name: 'Create',
-    component: CreateComponent
+    component: CreateView 
   },
   { 
     path: '/detail/:contentId', 
     name: 'Detail',
-    component: DetailComponent
+    component: DetailView
   },
   { 
     path: '/calendar', 
     name: 'Calendar',
-    component: TCalendar
+    component: CalendarView
   },
-  { 
-    path: '/dashboard', 
-    name: 'Dashboard',
-    component: TDashboard
-  },
-  { 
-    path: '/message', 
-    name: 'Message',
-    component: TMessage
-  },
-  { 
-    path: '/mypage', 
-    name: 'Mypage',
-    component: TMypage
-  },
-  { 
-    path: '/logout', 
-    name: 'Logout',
-    component: TLogout
-  },
-
-
+ 
 ]
 
 const router = createRouter({

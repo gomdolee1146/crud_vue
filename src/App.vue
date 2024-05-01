@@ -1,19 +1,18 @@
 <template>
   <div id="app">
-    <sidePanel></sidePanel>
-    
-    <main class="main">
+    <headerComponent></headerComponent>
+    <div class="main">
       <router-view></router-view>
-    </main>
+    </div>
   </div>
 </template>
 
 <script>
-import sidePanel from '@/components/layouts/SidePanel.vue';
+import HeaderComponent from './components/HeaderComponent.vue';
 
 export default {
   name: 'App',
-  components: { sidePanel },
+  components: { HeaderComponent },
 };
 </script>
 

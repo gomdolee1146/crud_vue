@@ -1,17 +1,35 @@
 @import '@/assets/scss/style.scss';
 
-::v-deep .vc-pane-container {
+  ::v-deep .vc-pane-container {
   .vc-header {
     height: 60px;
-    margin-bottom: -60px;
   }
 
   .vc-weeks {
     display: grid;
-    min-height: 300px;
+    grid-template-rows: 1fr repeat(6, 2fr);
     height: calc(100vh - 200px);
   }
   .vc-weekdays {
     align-items: flex-end;
+
+    .vc-weekday{
+      border-right: 1px solid $border-default;
+      border-bottom: 1px solid $border-default;
+      &:last-child {
+        border-right: 0 none;
+      }
+    }
+  }
+  .vc-day {
+    display: block;
+    border-bottom: 1px solid $border-default;
+    border-right: 1px solid $border-default;
+    &:last-child {
+      border-right: 0 none;
+    }
+  }
+  .vc-week:last-child .vc-day {
+    border-bottom: 0 none;
   }
 }

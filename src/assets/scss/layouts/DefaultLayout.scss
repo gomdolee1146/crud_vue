@@ -7,7 +7,6 @@
 .main {
   position: relative;
   height: calc(100vh - $header-height);
-  margin: $header-height 0 0 $nav-width;
+  margin: $header-height auto 0;
   padding: 20px;
-  box-sizing: border-box;
 }
