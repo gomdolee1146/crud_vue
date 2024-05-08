@@ -1,0 +1,47 @@
+@import '@/assets/scss/style.scss';
+
+.card {
+  margin-bottom: 40px;
+  &__title {
+    margin-bottom: 12px;
+  }
+  &__list_top {
+    border-bottom: 1px solid $border-default;
+    font-weight: 700;
+  }
+  &__list {
+  }
+  &__lst {
+    @include flex-box(flex-start, center);
+    width: 100%;
+    padding: 6px 0;
+
+    div {
+      padding: 0 12px;
+      text-align: center;
+    }
+    &:hover {
+      background-color: $bg-default;
+    }
+  }
+  &__content_date {
+    flex: 0 0 100px;
+    width: 100px;
+  }
+  &__content_title {
+    flex: 0 0 160px;
+    width: 160px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  &__content_box {
+    flex: 1 1 auto;
+    text-align: left !important;
+  }
+  &__content_check {
+    @include flex-box(center, center);
+    flex: 0 0 80px;
+    width: 80px;
+  }
+}

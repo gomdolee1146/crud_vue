@@ -1,5 +1,5 @@
 <template>
-  <VCalendar expanded @dayclick="test($event)" :attributes="attributes" />
+  <VCalendar expanded @dayclick="showModal($event)" :attributes="attributes" />
   <CreateModal
     v-if="isShow"
     :createData="createData"
@@ -22,6 +22,7 @@ export default {
       date: '',
       dateList: [],
       createData: {
+        id: '',
         date: '',
       },
       attributes: [
@@ -33,10 +34,10 @@ export default {
     };
   },
   methods: {
-    test(e) {
+    showModal(e) {
       this.isShow = !this.isShow;
       this.createData.date = e.id;
-      console.log(e);
+      this.createData.id = e.date;
     },
     hideModal(data) {
       this.isShow = data;
