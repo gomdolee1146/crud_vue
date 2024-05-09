@@ -1,7 +1,9 @@
 <template>
   <div class="create_modal">
-    <div class="g_dimmed" @click="toHideCreateModal"></div>
-    <div class="g_modal">
+    <transition name="fade">
+      <div class="g_dimmed" @click="toHideCreateModal" v-if="isShow"></div>
+    </transition>
+    <div class="g_modal" v-if="isShowWrap">
       <div class="modal__wrap">
         <h4 class="modal__title txt_headline6">{{ createDate }}</h4>
         <div class="form pc__scroll">
@@ -19,7 +21,12 @@
                     :key="idx"
                   >
                     <div class="form__slct_box">
-                      <input type="radio" :value="category" v-model="categoryName" @change="getCategoryOption(category)" />
+                      <input
+                        type="radio"
+                        :value="category"
+                        v-model="categoryName"
+                        @change="getCategoryOption(category)"
+                      />
                       <label>{{ category }}</label>
                     </div>
                   </li>
@@ -49,9 +56,7 @@
               class="form__textarea txt-body1"
             ></textarea>
           </div>
-          <div class="form__row">
-            ㅎㅎ
-          </div>
+          <div class="form__row">ㅎㅎ</div>
         </div>
         <div class="form__btn_wrap">
           <button class="form__btn form__btn-done txt_btn_large" @click="createContent">
@@ -77,6 +82,7 @@ export default {
       categoryList: categoryList,
       createDate: this.createData.date,
 
+      isShowWrap: false,
       isShowSlctBox: false,
       categoryName: '',
 
@@ -84,7 +90,6 @@ export default {
       title: index && index !== undefined ? data[index].title : '',
       content: index && index !== undefined ? data[index].content : '',
       category: index && index !== undefined ? data[index].category : '',
-      // color: index && index !== undefined ? data[index].color : '',
       isDone: index && index !== undefined ? data[index].isDone : '',
     };
   },
@@ -98,12 +103,7 @@ export default {
       this.$emit('hideModal', false);
     },
     toggleSlctBox() {
-      this.isShowSlctBox = !this.isShowSlctBox ;
-    },
-    getCategoryOption(){
-
-
-      this.toggleSlctBox();
+      this.isShowSlctBox = !this.isShowSlctBox;
     },
     writeContent() {
       this.data.push({
@@ -112,7 +112,6 @@ export default {
         title: this.title,
         content: this.content,
         category: this.categoryName,
-        // color: this.color,
         isDone: this.isDone,
       });
       this.$router.push({
@@ -123,7 +122,6 @@ export default {
       data[this.index].title = this.title;
       data[this.index].content = this.content;
       data[this.index].category = this.categoryName;
-      // data[this.index].color = this.color;
       data[this.index].isDone = this.isDone;
       this.$router.push({
         path: '/',
@@ -133,9 +131,16 @@ export default {
       if (this.index && this.index !== undefined) this.updateContent();
       else this.writeContent();
     },
+    showModal() {
+      if (this.isShow) {
+        this.$nextTick(() => {
+          this.isShowWrap = true;
+        });
+      }
+    },
   },
   mounted() {
-    console.log(this.categoryList);
+    this.showModal();
   },
 };
 </script>

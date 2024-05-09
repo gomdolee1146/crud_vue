@@ -1,42 +1,51 @@
 <template>
-  <div>
-    <div>{{ data.writer }}</div>
-    <div>{{ data.title }}</div>
-    <div>{{ data.content }}</div>
-
-    <button @click="updateData">수정</button>
-    <button @click="deleteData">삭제</button>
+  <div class="detail">
+    <div class="detail__wrap">
+      <div class="detail__title txt_subtitle1">{{ data.title }}</div>
+      <div class="detail__content txt_body1">{{ data.content }}</div>
+    </div>
+    <div class="detail__btn_wrap">
+      <button class="txt_btn_large" @click="updateData">수정</button>
+      <button class="txt_btn_large" @click="deleteData">삭제</button>
+      <button class="detail__btn-list txt_btn_large" @click="goToMain">목록으로</button>
+    </div>
   </div>
 </template>
 
 <script>
-import data from '@/data'
+import data from '@/data';
 
 export default {
   name: 'DetailComponent',
-  data(){
-    const idx = this.$route.params.contentId
+  data() {
+    const idx = this.$route.params.contentId;
     return {
       data: data[idx],
       index: idx,
-    }
+    };
   },
   methods: {
-    deleteData(){
+    deleteData() {
       data.splice(this.index, 1);
-      this.$router.push({
-        path: '/'
-      })
+      this.goToMain();
     },
-    
-    updateData(){
+
+    updateData() {
       this.$router.push({
         name: 'Create',
         params: {
-          contentId: this.index
-        }
-      })
+          contentId: this.index,
+        },
+      });
     },
-  }
-}
+    goToMain(){
+      this.$router.push({
+        path: '/'
+      })
+    }
+  },
+};
 </script>
+<style lang="scss" scoped>
+@import '@/assets/scss/components/detailComponents.scss';
+</style>

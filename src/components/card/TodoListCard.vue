@@ -9,23 +9,34 @@
         <div class="card__content_check">완료</div>
       </li>
     </ul>
-    <!-- <transition-group tag="ul" name="fade" class="card__list"> -->
-    <ul class="card__list">
-      <li class="card__lst txt_body2" v-for="(data, idx) in contentList" :key="idx">
+    <transition-group tag="ul" name="fade" class="card__list">
+      <li
+        class="card__lst txt_body2"
+        v-for="(data, idx) in contentList"
+        :key="idx"
+        @click="goToDetail(idx)"
+      >
         <div class="card__content_date">{{ data.date }}</div>
         <div class="card__content_title">{{ data.title }}</div>
-        <div class="card__content_box">{{ data.content }}</div>
-        <div class="card__content_check">
-          <span class="toggle" @click="sortList">
-            <input class="toggle__input" type="checkbox" :checked="data.isDone" />
+        <div class="card__content_box">
+          <p>{{ data.content }}</p>
+        </div>
+        <div class="card__content_check" @click.stop="">
+          <span class="toggle">
+            <input
+              class="toggle__input"
+              type="checkbox"
+              :value="data.isDone"
+              v-model="data.isDone"
+              @change="sortList($event, idx)"
+            />
             <label class="toggle__label">
               <i class="toggle__label_toggle"></i>
             </label>
           </span>
         </div>
       </li>
-    </ul>
-    <!-- </transition-group> -->
+    </transition-group>
   </div>
 </template>
 
@@ -48,22 +59,29 @@ export default {
   methods: {
     getList() {
       this.contentList = this.$_.cloneDeep(this.datas);
-
       if (this.isShowAll === false) {
         this.$_.remove(this.contentList, (i) => {
-          return i.id.toString() !== new Date().toString();
+          let resultDate = new Date(i.date).toDateString();
+          let todaysDate = new Date().toDateString();
+          return resultDate !== todaysDate;
         });
       } else {
         this.contentList = this.datas;
       }
     },
-    sortList() {
-      let a = [1, 2, 3, 4, 5]
-      a = this.$_.shuffle(a)
-      console.log(a)
-      // console.log(this.contentList);
-      // this.contentList = this.$_.sortBy(this.contentList, ['isDone', 'date']);
-      // console.log(this.contentList);
+    sortList(e, idx) {
+      data[idx].isDone = e.target.value;
+      this.$nextTick(() => {
+        this.contentList = this.$_.sortBy(this.contentList, ['isDone', 'date']);
+      });
+    },
+    goToDetail(idx) {
+      this.$router.push({
+        name: 'Detail',
+        params: {
+          contentId: idx,
+        },
+      });
     },
   },
   mounted() {

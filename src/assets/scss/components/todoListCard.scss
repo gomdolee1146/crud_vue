@@ -37,7 +37,15 @@
   }
   &__content_box {
     flex: 1 1 auto;
+    max-width: calc(100vw - 400px);
     text-align: left !important;
+    p {
+      display: block;
+      width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
   }
   &__content_check {
     @include flex-box(center, center);

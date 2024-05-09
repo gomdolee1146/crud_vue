@@ -1,0 +1,41 @@
+@import '@/assets/scss/style.scss';
+
+.detail {
+  &__wrap {
+    padding: 20px 24px;
+    margin-bottom: 12px;
+    border: 1px solid $border-default;
+    border-radius: 8px;
+    box-sizing: border-box;
+  }
+
+  &__title {
+    margin-bottom: 16px;
+  }
+
+  &__content {
+    width: 100%;
+    min-height: 60vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  &__btn_wrap {
+    @include flex-box(flex-start);
+    position: relative;
+    width: 100%;
+
+    button {
+      display: inline-block;
+      height: 36px;
+      line-height: 36px;
+      padding: 0 12px;
+      margin-right: 8px;
+      border-radius: 8px;
+      background-color: $bg-default;
+    }
+  }
+  &__btn-list {
+    position: absolute;
+    right: 0;
+  }
+}
