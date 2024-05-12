@@ -12,29 +12,22 @@
               <i></i><span class="txt_subtitle2">카테고리</span>
             </div>
             <div class="form__content">
-              <div class="form__input" @click="toggleSlctBox">
-                <p>선택하세요</p>
-                <ul class="form__slct_list" v-if="isShowSlctBox">
-                  <li
-                    class="form__slct_lst"
-                    v-for="(category, idx) in categoryList"
-                    :key="idx"
-                  >
-                    <div class="form__slct_box">
-                      <input
-                        type="radio"
-                        :value="category"
-                        v-model="categoryName"
-                        @change="getCategoryOption(category)"
-                      />
-                      <label>{{ category }}</label>
-                    </div>
-                  </li>
-                </ul>
+              <button class="form__btn-slct" @click="isShowCategory">
+                {{ categoryName ? categoryName : '선택하세요' }}
+              </button>
+              <div class="form__slct_list" v-if="isShowCate">
+                <span
+                  class="form__slct_lst"
+                  v-for="(category, idx) in categoryList"
+                  :key="idx"
+                  ref="formSlctLst"
+                  @click="saveCategoryInfo(category)"
+                >
+                  {{ category }}
+                </span>
               </div>
             </div>
           </div>
-
           <div class="form__row">
             <div class="form__title"><i></i><span class="txt_subtitle2">제목</span></div>
             <div class="form__content">
@@ -56,7 +49,6 @@
               class="form__textarea txt-body1"
             ></textarea>
           </div>
-          <div class="form__row">ㅎㅎ</div>
         </div>
         <div class="form__btn_wrap">
           <button class="form__btn form__btn-done txt_btn_large" @click="createContent">
@@ -81,6 +73,7 @@ export default {
       data: data,
       categoryList: categoryList,
       createDate: this.createData.date,
+      isShowCate: false,
 
       isShowWrap: false,
       isShowSlctBox: false,
@@ -137,6 +130,13 @@ export default {
           this.isShowWrap = true;
         });
       }
+    },
+    isShowCategory(){
+      this.isShowCate = !this.isShowCate;
+    },
+    saveCategoryInfo(category) {
+      this.categoryName = category;
+      this.isShowCate = false;
     },
   },
   mounted() {

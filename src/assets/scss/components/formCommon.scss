@@ -1,5 +1,4 @@
 @import '@/assets/scss/style.scss';
-
 .form {
   max-height: 35vh;
 
@@ -27,27 +26,38 @@
     flex: 1 1 auto;
     position: relative;
   }
-
+  &__btn-slct {
+    width: 100%;
+    height: 100%;
+    padding: 4px 0;
+    box-sizing: border-box;
+    text-align: left;
+  }
   &__slct_list {
     position: absolute;
     top: 100%;
     left: 50%;
     width: 100%;
-    height: 200px;
+    max-height: 200px;
+    margin-top: 8px;
     border: 1px solid $border-default;
     border-radius: 4px;
     background: #fff;
+    overflow-y: auto;
+    overflow-x: hidden;
     transform: translateX(-50%);
     z-index: 2;
   }
 
   &__slct_lst {
+    display: block;
+    width: 100%;
+    padding: 6px 8px;
+    box-sizing: border-box;
+    cursor: pointer;
     &:hover {
       background: $primary;
     }
-  }
-  &__slct_box {
-    padding: 0 16px;
   }
 
   &__input,

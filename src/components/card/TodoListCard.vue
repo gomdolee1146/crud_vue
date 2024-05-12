@@ -47,7 +47,7 @@ export default {
   name: 'TodoListCard',
   data() {
     return {
-      datas: data,
+      data: data,
       todayDate: Date.now(),
       contentList: [],
     };
@@ -55,10 +55,11 @@ export default {
   props: {
     title: { type: String, default: '남아있는 해야 일 목록 이예요!' },
     isShowAll: { type: Boolean, default: true },
+    updateIdx: { type: Number, default: null },
   },
   methods: {
     getList() {
-      this.contentList = this.$_.cloneDeep(this.datas);
+      this.contentList = this.$_.cloneDeep(data);
       if (this.isShowAll === false) {
         this.$_.remove(this.contentList, (i) => {
           let resultDate = new Date(i.date).toDateString();
@@ -66,14 +67,12 @@ export default {
           return resultDate !== todaysDate;
         });
       } else {
-        this.contentList = this.datas;
+        this.contentList = this.data;
       }
     },
     sortList(e, idx) {
       data[idx].isDone = e.target.value;
-      this.$nextTick(() => {
-        this.contentList = this.$_.sortBy(this.contentList, ['isDone', 'date']);
-      });
+      this.$emit('updateList', idx);
     },
     goToDetail(idx) {
       this.$router.push({
@@ -87,6 +86,16 @@ export default {
   mounted() {
     this.getList();
   },
+  watch: {
+    updateIdx() {
+      if (this.updateIdx !== null) {
+        console.log(this.contentList[this.updateIdx])
+        console.log(data[this.updateIdx])
+        this.contentList[this.updateIdx].isDone = data[this.updateIdx].isDone
+      }
+      this.$emit('updateList', null)
+    }
+  }
 };
 </script>
 
