@@ -41,38 +41,22 @@
 </template>
 
 <script>
-import data from '@/data';
-
 export default {
   name: 'TodoListCard',
   data() {
     return {
-      data: data,
       todayDate: Date.now(),
-      contentList: [],
     };
   },
   props: {
     title: { type: String, default: '남아있는 해야 일 목록 이예요!' },
     isShowAll: { type: Boolean, default: true },
     updateIdx: { type: Number, default: null },
+    todoList: { type: Object, default: () => {} },
   },
   methods: {
-    getList() {
-      this.contentList = this.$_.cloneDeep(data);
-      if (this.isShowAll === false) {
-        this.$_.remove(this.contentList, (i) => {
-          let resultDate = new Date(i.date).toDateString();
-          let todaysDate = new Date().toDateString();
-          return resultDate !== todaysDate;
-        });
-      } else {
-        this.contentList = this.data;
-      }
-    },
     sortList(e, idx) {
-      data[idx].isDone = e.target.value;
-      this.$emit('updateList', idx);
+      this.$emit('updateList', idx, e.target.value);
     },
     goToDetail(idx) {
       this.$router.push({
@@ -83,19 +67,19 @@ export default {
       });
     },
   },
-  mounted() {
-    this.getList();
-  },
-  watch: {
-    updateIdx() {
-      if (this.updateIdx !== null) {
-        console.log(this.contentList[this.updateIdx])
-        console.log(data[this.updateIdx])
-        this.contentList[this.updateIdx].isDone = data[this.updateIdx].isDone
+  computed: {
+    contentList() {
+      let contentList = this.todoList;
+      if (this.isShowAll === false) {
+        return this.$_.filter(contentList, (i) => {
+          let resultDate = new Date(i.date).toDateString();
+          let todaysDate = new Date().toDateString();
+          return resultDate === todaysDate;
+        });
       }
-      this.$emit('updateList', null)
-    }
-  }
+      return contentList;
+    },
+  },
 };
 </script>
 
