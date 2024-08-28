@@ -15,4 +15,4 @@
 - 사용 언어: Vue.js, scss 사용
 
 ```
-![프로젝트 썸네일](https://github.com/gomdolee1146/vue_portfolio/blob/main/src/assets/img/port04.png)
+![프로젝트 썸네일](./src/assets/thumbnail.png)
