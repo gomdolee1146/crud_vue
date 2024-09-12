@@ -1,7 +1,10 @@
 <template>
   <div class="detail">
     <div class="detail__wrap">
-      <div class="detail__title txt_subtitle1">{{ data.title }}</div>
+      <div class="detail__title">
+        <h2 class="txt_subtitle1">제목</h2>
+        <h4 class="detail__title_box txt_headline6">{{ data.title }}</h4>
+      </div>
       <div class="detail__content txt_body1">{{ data.content }}</div>
     </div>
     <div class="detail__btn_wrap">
@@ -38,11 +41,11 @@ export default {
         },
       });
     },
-    goToMain(){
+    goToMain() {
       this.$router.push({
-        path: '/'
-      })
-    }
+        path: '/',
+      });
+    },
   },
 };
 </script>

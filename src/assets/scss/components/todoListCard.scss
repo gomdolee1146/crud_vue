@@ -2,8 +2,18 @@
 
 .card {
   margin-bottom: 80px;
+  &:first-child {
+    margin-top: -60px;
+  }
   &__title {
     margin-bottom: 20px;
+  }
+  &__list_wrap {
+    padding: 8px 20px;
+    border-radius: 16px;
+    background: #fff;
+    overflow: hidden;
+    @include shadow-opt('bottom', 1);
   }
   &__list_top {
     border-bottom: 1px solid $border-default;
@@ -13,39 +23,41 @@
   }
   &__lst {
     @include flex-box(flex-start, center);
+    position: relative;
     width: 100%;
-    padding: 8px 0;
+    padding: 16px;
+    border-bottom: 1px solid $border-default;
+
+    &:last-child {
+      border-bottom: 0;
+    }
 
     div {
       padding: 0 12px;
-      text-align: center;
     }
     &:hover {
-      background-color: $bg-default;
+      background: $bg-default;
     }
   }
-  &__content_date {
-    flex: 0 0 100px;
-    width: 100px;
+
+  &__box {
   }
   &__content_title {
-    flex: 0 0 160px;
-    width: 160px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    margin-bottom: 4px;
+    font-size: 16px;
+    font-weight: 700;
+    color: $text-default;
   }
-  &__content_box {
-    flex: 1 1 auto;
-    max-width: calc(100vw - 400px);
-    text-align: left !important;
-    p {
-      display: block;
-      width: 100%;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
+  &__content_date {
+    font-size: 13px;
+    color: 400;
+    color: $text-gray2;
+  }
+  &__content_check {
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
   }
   &__content_check {
     @include flex-box(center, center);

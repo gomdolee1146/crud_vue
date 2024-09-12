@@ -1,39 +1,42 @@
 @import '@/assets/scss/style.scss';
 
 .header {
-  @include flex-box(space-between, center);
-  position: absolute;
-  top: 0;
-  left: 50%;
+  @include flex-box(space-between, flex-start);
   width: 100%;
   height: $header-height;
-  line-height: 1em;
   padding: 24px 30px 16px;
   border-bottom: 1px solid $border-default;
   background: $primary;
-  transform: translateX(-50%);
   z-index: 10;
   font-family: 'gmarket';
 
+  &-main {
+    height: $main-header-height;
+  }
   &__title {
     display: inline-block;
     padding: 0 8px;
     font-size: 24px;
     font-weight: 700;
-    color: $text-default;
+    color: $text-gray4;
+    cursor: pointer;
   }
   &__box {
-    @include flex-box(flex-start, center);
+    @include flex-box(flex-end, center);
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
   &__link {
     font-size: 16px;
     font-weight: 500;
-    color: $text-default;
     text-align: center;
 
     &_box {
       padding: 0 4px;
+      color: $text-gray4;
     }
   }
 }

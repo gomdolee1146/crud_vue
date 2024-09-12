@@ -54,7 +54,12 @@
           <button class="form__btn form__btn-done txt_btn_large" @click="createContent">
             {{ this.index !== undefined ? '수정' : '작성' }}
           </button>
-          <button class="form__btn form__btn-cancel txt_btn-large">취소</button>
+          <button
+            class="form__btn form__btn-cancel txt_btn-large"
+            @click="toHideCreateModal"
+          >
+            취소
+          </button>
         </div>
       </div>
     </div>
@@ -131,7 +136,7 @@ export default {
         });
       }
     },
-    isShowCategory(){
+    isShowCategory() {
       this.isShowCate = !this.isShowCate;
     },
     saveCategoryInfo(category) {

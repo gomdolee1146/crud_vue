@@ -3,10 +3,5 @@
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-.main {
-  position: relative;
-  height: calc(100vh - $header-height);
-  margin: $header-height auto 0;
-  padding: 20px;
+  background: $sub;
 }

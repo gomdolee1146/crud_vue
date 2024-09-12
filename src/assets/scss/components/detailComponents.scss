@@ -11,13 +11,25 @@
 
   &__title {
     margin-bottom: 16px;
+    &_box {
+      margin-top: 12px;
+      padding: 16px;
+      border-radius: 16px;
+      background: $default;
+      @include shadow-opt('center', 1);
+    }
   }
 
   &__content {
     width: 100%;
     min-height: 60vh;
+    padding: 12px 16px;
+    border-radius: 16px;
+    background: $default;
+    box-sizing: border-box;
     overflow-x: hidden;
     overflow-y: auto;
+    @include shadow-opt('center', 1)
   }
   &__btn_wrap {
     @include flex-box(flex-start);
@@ -31,7 +43,8 @@
       padding: 0 12px;
       margin-right: 8px;
       border-radius: 8px;
-      background-color: $bg-default;
+      background: $brand;
+      color: $text-gray4;
     }
   }
   &__btn-list {

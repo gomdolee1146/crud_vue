@@ -1,3 +1,4 @@
+
 // global 요소
 .g_dimmed {
   position: absolute;
@@ -19,6 +20,7 @@
   top: 40px;
   left: 50%;
   width: 80%;
+  max-width: 480px;
   height: 75vh;
   border-radius: 16px;
   background: #fff;
@@ -36,11 +38,11 @@
   width: 8px;
 }
 .pc__scroll::-webkit-scrollbar-track {
-  background-color: transparent;
+  background: transparent;
 }
 .pc__scroll::-webkit-scrollbar-thumb {
   border-radius: 100px;
-  background-color: #dfdfdf;
+  background: #dfdfdf;
 }
 .pc__scroll::-webkit-scrollbar-button:start:decrement {
   display: block;

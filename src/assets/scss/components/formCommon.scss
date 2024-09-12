@@ -102,11 +102,11 @@
     line-height: 46px;
     border-radius: 12px;
     &-done {
-      background-color: $brand;
+      background: $brand;
       color: #fff;
     }
     &-cancel {
-      background-color: $bg-default;
+      background: $bg-default;
       color: $text-gray1;
     }
   }

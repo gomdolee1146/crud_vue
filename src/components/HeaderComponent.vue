@@ -1,15 +1,17 @@
 <template>
-  <header class="header">
-    <h1 class="header__title">Calendar</h1>
-    <ul class="header__box">
-      <li class="header__link" v-for="(menu, idx) in menuList" :key="idx">
-        <router-link :to="menu.link">
-          <div class="header__link_box">
-            {{ menu.txt }}
-          </div>
-        </router-link>
-      </li>
-    </ul>
+  <header class="header" :class="setHeaderClass">
+    <div class="header__wrap">
+      <h1 class="header__title" @click="goToMain">Calendar</h1>
+      <ul class="header__box">
+        <li class="header__link" v-for="(menu, idx) in menuList" :key="idx">
+          <router-link :to="menu.link">
+            <div class="header__link_box">
+              {{ menu.txt }}
+            </div>
+          </router-link>
+        </li>
+      </ul>
+    </div>
   </header>
 </template>
 
@@ -30,18 +32,29 @@ export default {
       menuList: [],
     };
   },
-  methods: {
-   
+  computed: {
+    setHeaderClass() {
+      if (this.$route.path === '/') {
+        return 'header-main';
+      } else {
+        return '';
+      }
+    },
   },
-  watch:{
-    $route(to){
-      this.menuList = this.$_.cloneDeep(this.navMenuList)
-
+  methods: {
+    goToMain() {
+      this.$router.push('/');
+    },
+  },
+  watch: {
+    $route(to) {
+      this.menuList = this.$_.cloneDeep(this.navMenuList);
+      if (to.name === 'Detail') this.menuList = [];
       this.$_.remove(this.menuList, (i) => {
-        return i.link === to.path
-      })
-    }
-  }
+        return i.link === to.path;
+      });
+    },
+  },
 };
 </script>
 
